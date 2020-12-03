@@ -1,5 +1,5 @@
 {
-  "name": "bigboy-toolapi",
+  "name": "bigboy-template-tool",
   "version": "0.0.1",
   "description": "工具库生成模板",
   "main": "lib/index.js",
@@ -15,7 +15,10 @@
   "scripts": {
     "cz": "git-cz",
     "build": "rollup --config",
-    "test": "jest --no-cache"
+    "test": "jest --no-cache",
+		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+		"publish:pre": "npm run cz && npm run changelog",
+		"publish": "npm run build && npm publish"
   },
   "config": {
     "commitizen": {
@@ -56,6 +59,7 @@
     "@typescript-eslint/parser": "^4.8.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "commitizen": "^4.2.2",
+    "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
