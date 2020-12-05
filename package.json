@@ -18,12 +18,15 @@
     "typescript"
   ],
   "scripts": {
+		"eslint": "eslint --fix modules --ext .ts",
+		"prettier": "prettier --write \"modules/**/*.ts\"",
+		"commit": "cz",
+		"build": "npm run eslint && npm run prettier && rm -rf lib && rollup --config",
     "cz": "git-cz",
-    "build": "rollup --config",
     "test": "jest --no-cache",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "publish:pre": "npm run build && npm run cz && npm run changelog",
-		"publish": "node scripts/publish.js"
+    "publish": "node scripts/publish.js"
   },
   "config": {
     "commitizen": {
@@ -38,8 +41,8 @@
   },
   "lint-staged": {
     "mudules/**/*.ts": [
-      "eslint --fix",
-      "prettier --write"
+			"npm run eslint",
+			"npm run prettier"
     ]
   },
   "dependencies": {

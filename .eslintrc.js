@@ -22,7 +22,7 @@ module.exports = {
     'prettier'
 	],
 	'rules': {
-		// '@typescript-eslint/indent': ['warn', 2],
+		"prettier/prettier": "error",
     '@typescript-eslint/no-empty-interface': ['off'],
     '@typescript-eslint/camelcase': ['off'],
     '@typescript-eslint/array-type': ['off'],
@@ -38,19 +38,5 @@ module.exports = {
 		'prefer-const': 0,
 		'no-console': 0,
 		'semi': ['error', 'always'],
-		'prettier/prettier': [
-      'warn',
-      {
-        'printWidth': 50,
-        'tabWidth': 2,
-        'singleQuote': true,
-        'jsxSingleQuote': true,
-        'semi': true,
-        'trailingComma': 'none',
-        'endOfLine': 'auto',
-        'arrowParens': 'avoid',
-        'rangeEnd': 0
-      }
-    ]
 	}
 };
