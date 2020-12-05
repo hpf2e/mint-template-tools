@@ -1,5 +1,5 @@
 import path from 'path'
-import rollupTypescript from 'rollup-plugin-typescript2'
+import typescript from 'rollup-plugin-typescript2'
 import babel from 'rollup-plugin-babel'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
@@ -13,10 +13,9 @@ const paths = {
   output: path.join(__dirname, '/lib'),
 }
 
-// rollup 配置项
 const rollupConfig = {
-  input: paths.input,
-  output: [
+  input: paths.input, // 打包入口
+  output: [ // 打包出口
     {
       file: path.join(paths.output, 'index.js'),  // 引出的方式为umd的方式
       format: 'umd',
@@ -24,7 +23,6 @@ const rollupConfig = {
     },
   ],
   // external: ['lodash'], // 指出应将哪些模块视为外部模块，如 Peer dependencies 中的依赖
-  // plugins 需要注意引用顺序
   plugins: [
     // 验证导入的文件
     eslint({
@@ -33,18 +31,16 @@ const rollupConfig = {
       include: ['modules/**/*.ts'],
       exclude: ['node_modules/**', 'lib/**', '*.js'],
     }),
-
-    // 使得 rollup 支持 commonjs 规范，识别 commonjs 规范的依赖
-    commonjs(),
-
     // 配合 commnjs 解析第三方模块
     resolve({
       // 将自定义选项传递给解析插件
       customResolveOptions: {
         moduleDirectory: 'node_modules',
       },
-    }),
-    rollupTypescript(),
+		}),
+		// 使得 rollup 支持 commonjs 规范，识别 commonjs 规范的依赖
+    commonjs(),
+    typescript(),
     babel({
       runtimeHelpers: true,
       // 只转换源代码，不运行外部依赖
