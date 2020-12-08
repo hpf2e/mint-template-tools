@@ -18,10 +18,10 @@
     "typescript"
   ],
   "scripts": {
-		"eslint": "eslint --fix modules --ext .ts",
-		"prettier": "prettier --write \"modules/**/*.ts\"",
-		"commit": "cz",
-		"build": "npm run eslint && npm run prettier && rm -rf lib && rollup --config",
+    "eslint": "eslint --fix modules --ext .ts",
+    "prettier": "prettier --write \"modules/**/*.ts\"",
+    "commit": "cz",
+    "build": "npm run eslint && npm run prettier && rm -rf lib && rollup --config",
     "cz": "git-cz",
     "test": "jest --no-cache",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
@@ -41,8 +41,8 @@
   },
   "lint-staged": {
     "mudules/**/*.ts": [
-			"npm run eslint",
-			"npm run prettier"
+      "npm run eslint",
+      "npm run prettier"
     ]
   },
   "dependencies": {
@@ -60,7 +60,7 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@microsoft/api-extractor": "^7.12.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
-    "@types/jest": "^26.0.16",
+    "@types/jest": "^26.0.17",
     "@types/lodash": "^4.14.165",
     "@types/lodash.assign": "^4.2.6",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
